@@ -19,7 +19,7 @@ public class PriceRule extends Rule {
         if (Objects.isNull(price))
             throw new PriceException("Price cannot be null");
 
-        if (price.compareTo(BigDecimal.ZERO) > 0)
+        if (price.compareTo(BigDecimal.ZERO) < 0)
             throw new PriceException("Price cannot be lower than zero");
     }
 }
