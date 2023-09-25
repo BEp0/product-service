@@ -26,6 +26,5 @@ public class ProductAttribute {
     private Long store;
     private Long quantity;
     private boolean available;
-
 }
 
