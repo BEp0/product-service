@@ -8,6 +8,7 @@ import java.util.Objects;
 public class SkuRule extends Rule {
 
     public static final int MIN_LENGTH_SKU = 5;
+    public static final String REGEX_ONLY_NUMBERS = "[0-9]+";
 
     public SkuRule(Rule next) {
         super(next);
@@ -22,6 +23,9 @@ public class SkuRule extends Rule {
 
         if (sku.isBlank())
             throw new SkuException("Sku cannot be blank");
+
+        if (!sku.matches(REGEX_ONLY_NUMBERS))
+            throw new SkuException("Sku should have only numbers");
 
         if (sku.length() < MIN_LENGTH_SKU)
             throw new SkuException("Sku length cannot be lower than " + MIN_LENGTH_SKU);
