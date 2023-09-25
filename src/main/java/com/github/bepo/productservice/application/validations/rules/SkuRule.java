@@ -14,7 +14,7 @@ public class SkuRule extends Rule {
     }
 
     @Override
-    public void valid(ProductDTO productDTO) {
+    protected void validation(ProductDTO productDTO) {
         var sku = productDTO.sku();
 
         if (Objects.isNull(sku))
@@ -25,7 +25,5 @@ public class SkuRule extends Rule {
 
         if (sku.length() < MIN_LENGTH_SKU)
             throw new SkuException("Sku length cannot be lower than " + MIN_LENGTH_SKU);
-
-        doNext(productDTO);
     }
 }
