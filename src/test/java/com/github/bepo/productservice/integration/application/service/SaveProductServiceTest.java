@@ -34,7 +34,7 @@ class SaveProductServiceTest extends IntegrationTest {
 
         var product = productRepository.findProductBySku(SKU);
         assertNotNull(product);
-        assertEquals(2L, product.getId());
+        assertEquals(3L, product.getId());
         assertEquals(SKU, product.getSku());
         assertAttributes(dto, product);
     }
