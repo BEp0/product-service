@@ -1,4 +1,4 @@
-package com.github.bepo.productservice.core.exception;
+package com.github.bepo.productservice.handler;
 
 import com.github.bepo.productservice.core.dto.ExceptionDTO;
 import jakarta.persistence.EntityNotFoundException;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class ExceptionAdvice {
+public class WebExceptionAdvice {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ExceptionDTO> entityNotFound(EntityNotFoundException exception) {

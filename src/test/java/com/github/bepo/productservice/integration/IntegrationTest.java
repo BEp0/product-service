@@ -2,8 +2,8 @@ package com.github.bepo.productservice.integration;
 
 import com.github.bepo.productservice.core.domain.Product;
 import com.github.bepo.productservice.core.domain.ProductAttribute;
-import com.github.bepo.productservice.core.repository.ProductAttributeRepository;
-import com.github.bepo.productservice.core.repository.ProductRepository;
+import com.github.bepo.productservice.adapters.product.ProductAttributeRepository;
+import com.github.bepo.productservice.adapters.product.ProductRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;

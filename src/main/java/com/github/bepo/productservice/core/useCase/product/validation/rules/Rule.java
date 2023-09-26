@@ -1,4 +1,4 @@
-package com.github.bepo.productservice.application.validations.rules;
+package com.github.bepo.productservice.core.useCase.product.validation.rules;
 
 import com.github.bepo.productservice.core.dto.ProductDTO;
 

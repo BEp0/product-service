@@ -1,7 +1,7 @@
-package com.github.bepo.productservice.core.useCase;
+package com.github.bepo.productservice.core.useCase.product;
 
 import com.github.bepo.productservice.core.dto.ProductDTO;
 
-public interface SaveProduct {
+public interface SaveProductUseCase {
     void save(ProductDTO productDTO);
 }

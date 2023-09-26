@@ -1,6 +1,6 @@
-package com.github.bepo.productservice.application.validations.rules;
+package com.github.bepo.productservice.core.useCase.product.validation.rules;
 
-import com.github.bepo.productservice.application.exception.QuantityException;
+import com.github.bepo.productservice.core.exception.QuantityException;
 import com.github.bepo.productservice.core.dto.ProductDTO;
 import lombok.extern.slf4j.Slf4j;
 

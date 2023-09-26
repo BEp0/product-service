@@ -1,4 +1,4 @@
-package com.github.bepo.productservice.application.exception;
+package com.github.bepo.productservice.core.exception;
 
 public class SkuException extends BadRequestException {
     public SkuException(String reason) {

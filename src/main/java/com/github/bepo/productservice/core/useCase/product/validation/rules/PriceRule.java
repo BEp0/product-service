@@ -1,6 +1,6 @@
-package com.github.bepo.productservice.application.validations.rules;
+package com.github.bepo.productservice.core.useCase.product.validation.rules;
 
-import com.github.bepo.productservice.application.exception.PriceException;
+import com.github.bepo.productservice.core.exception.PriceException;
 import com.github.bepo.productservice.core.dto.ProductDTO;
 
 import java.math.BigDecimal;

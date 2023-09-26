@@ -1,4 +1,4 @@
-package com.github.bepo.productservice.core.repository;
+package com.github.bepo.productservice.adapters.product;
 
 import com.github.bepo.productservice.core.domain.ProductAttribute;
 import org.springframework.data.jpa.repository.JpaRepository;
