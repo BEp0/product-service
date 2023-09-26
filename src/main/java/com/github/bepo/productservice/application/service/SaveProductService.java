@@ -11,12 +11,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SaveProductService implements SaveProduct {
 
-    private final ProductValidation validation;
     private final PersistProductService persistProductService;
 
     @Override
     public void save(ProductDTO productDTO) {
-        validation.fullValidationDTO(productDTO);
+        ProductValidation.fullValidationDTO(productDTO);
         persistProductService.persistProduct(productDTO);
     }
 }

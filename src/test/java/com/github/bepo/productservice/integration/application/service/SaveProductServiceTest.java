@@ -1,9 +1,11 @@
 package com.github.bepo.productservice.integration.application.service;
 
+import com.github.bepo.productservice.application.exception.BadRequestException;
 import com.github.bepo.productservice.application.service.SaveProductService;
 import com.github.bepo.productservice.core.domain.Product;
 import com.github.bepo.productservice.core.dto.ProductDTO;
 import com.github.bepo.productservice.integration.IntegrationTest;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +27,12 @@ class SaveProductServiceTest extends IntegrationTest {
 
     @Test
     @DisplayName("Should save and mount a product correctly")
+    @Transactional
     void saveProduct() {
         var dto = new ProductDTO(SKU, PRICE, STORE, QUANTITY, AVAILABLE);
-
         saveProductService.save(dto);
-        var product = productRepository.findProductBySku(SKU);
 
+        var product = productRepository.findProductBySku(SKU);
         assertNotNull(product);
         assertEquals(2L, product.getId());
         assertEquals(SKU, product.getSku());
@@ -39,16 +41,12 @@ class SaveProductServiceTest extends IntegrationTest {
 
     @Test
     @DisplayName("Should valid sku in productDTO")
+    @Transactional
     void validProduct() {
         var dto = new ProductDTO("", PRICE, STORE, QUANTITY, AVAILABLE);
-
-        saveProductService.save(dto);
-        var product = productRepository.findProductBySku(SKU);
-
-        assertNotNull(product);
-        assertEquals(2L, product.getId());
-        assertEquals(SKU, product.getSku());
-        assertAttributes(dto, product);
+        var exception = assertThrows(BadRequestException.class, () -> saveProductService.save(dto));
+        String messageExpect = "Sku cannot be blank";
+        assertTrue(exception.getMessage().contains(messageExpect));
     }
 
     public void assertAttributes(ProductDTO expected, Product product) {

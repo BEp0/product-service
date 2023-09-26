@@ -9,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class PersistProductService {
 
     private final ProductRepository productRepository;
@@ -35,7 +35,7 @@ public class PersistProductService {
 
     private ProductAttribute getAttribute(ProductDTO productDTO, Product product) {
         if (productAttributeRepository.existsByStoreAndProduct_Sku(productDTO.store(), productDTO.sku())) {
-            var attribute = productAttributeRepository.findProductAttributeByStoreAndSku(productDTO.store(), productDTO.sku());
+            var attribute = productAttributeRepository.findProductAttributeByStoreAndProduct_Id(productDTO.store(), product.getId());
             attribute.setPrice(productDTO.price());
             attribute.setQuantity(productDTO.quantity());
             attribute.setAvailable(productDTO.available());

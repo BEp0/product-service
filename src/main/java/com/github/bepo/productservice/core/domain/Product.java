@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Objects.isNull;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,10 +27,12 @@ public class Product {
 
     @JoinColumn
     @OneToMany
-    private List<ProductAttribute> attributes = new ArrayList<>();
+    private List<ProductAttribute> attributes;
 
     public void setAttributes(ProductAttribute attribute) {
-        this.attributes.add(attribute);
+        if (isNull(attributes))
+            attributes = new ArrayList<>();
+        attributes.add(attribute);
     }
 
     public void setAttributes(List<ProductAttribute> attributes) {
