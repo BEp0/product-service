@@ -3,7 +3,7 @@ package com.github.bepo.productservice.application.validations.rules;
 import com.github.bepo.productservice.application.exception.SkuException;
 import com.github.bepo.productservice.core.dto.ProductDTO;
 
-import java.util.Objects;
+import static java.util.Objects.isNull;
 
 public class SkuRule extends Rule {
 
@@ -18,7 +18,7 @@ public class SkuRule extends Rule {
     protected void validation(ProductDTO productDTO) {
         var sku = productDTO.sku();
 
-        if (Objects.isNull(sku))
+        if (isNull(sku))
             throw new SkuException("Sku cannot be null");
 
         if (sku.isBlank())

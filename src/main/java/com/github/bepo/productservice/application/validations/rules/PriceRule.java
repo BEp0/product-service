@@ -4,7 +4,8 @@ import com.github.bepo.productservice.application.exception.PriceException;
 import com.github.bepo.productservice.core.dto.ProductDTO;
 
 import java.math.BigDecimal;
-import java.util.Objects;
+
+import static java.util.Objects.isNull;
 
 public class PriceRule extends Rule {
 
@@ -16,7 +17,7 @@ public class PriceRule extends Rule {
     public void validation(ProductDTO productDTO) {
         var price = productDTO.price();
 
-        if (Objects.isNull(price))
+        if (isNull(price))
             throw new PriceException("Price cannot be null");
 
         if (price.compareTo(BigDecimal.ZERO) < 0)

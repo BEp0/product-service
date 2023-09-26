@@ -2,7 +2,7 @@ package com.github.bepo.productservice.application.validations.rules;
 
 import com.github.bepo.productservice.core.dto.ProductDTO;
 
-import java.util.Objects;
+import static java.util.Objects.isNull;
 
 public abstract class Rule {
 
@@ -20,9 +20,8 @@ public abstract class Rule {
     protected abstract void validation(ProductDTO productDTO);
 
     protected void doNext(ProductDTO productDTO) {
-        if (Objects.isNull(next)){
+        if (isNull(next))
             return;
-        }
         next.validDTO(productDTO);
     }
 }
