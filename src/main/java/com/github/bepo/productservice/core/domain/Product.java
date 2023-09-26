@@ -1,15 +1,15 @@
 package com.github.bepo.productservice.core.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -21,5 +21,13 @@ public class Product {
 
     @JoinColumn
     @OneToMany
-    private List<ProductAttribute> attributes;
+    private List<ProductAttribute> attributes = new ArrayList<>();
+
+    public void setAttributes(ProductAttribute attribute) {
+        this.attributes.add(attribute);
+    }
+
+    public void setAttributes(List<ProductAttribute> attributes) {
+        this.attributes = attributes;
+    }
 }
