@@ -6,7 +6,7 @@ import static java.util.Objects.isNull;
 
 public abstract class Rule {
 
-    private Rule next;
+    private final Rule next;
 
     protected Rule(Rule next) {
         this.next = next;
