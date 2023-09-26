@@ -1,10 +1,9 @@
 package com.github.bepo.productservice.application.service;
 
+import com.github.bepo.productservice.application.validations.ProductValidation;
 import com.github.bepo.productservice.core.dto.ProductDTO;
-import com.github.bepo.productservice.core.repository.ProductAttributeRepository;
-import com.github.bepo.productservice.core.repository.ProductRepository;
+import com.github.bepo.productservice.core.service.PersistProductService;
 import com.github.bepo.productservice.core.useCase.SaveProduct;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +11,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SaveProductService implements SaveProduct {
 
-    private final ProductRepository productRepository;
-    private final ProductAttributeRepository productAttributeRepository;
+    private final ProductValidation validation;
+    private final PersistProductService persistProductService;
 
     @Override
-    public void save(@Valid ProductDTO productDTO) {
-        // create product and attribute product
-        // save both
+    public void save(ProductDTO productDTO) {
+        validation.fullValidationDTO(productDTO);
+        persistProductService.persistProduct(productDTO);
     }
 }
